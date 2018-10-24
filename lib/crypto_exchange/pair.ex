@@ -13,4 +13,15 @@ defmodule CryptoExchange.Pair do
     :quote
   ]
 
+  @spec from_string(String.t, String.t) :: t
+  def from_string(string, delimiter \\ "-") do
+    quotes = string
+    |> String.split(delimiter)
+
+    %__MODULE__{
+      base: List.first(quotes),
+      quote: List.last(quotes)
+    }
+  end
+
 end
