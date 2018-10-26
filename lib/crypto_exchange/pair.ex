@@ -24,4 +24,9 @@ defmodule CryptoExchange.Pair do
     }
   end
 
+  @spec to_string(t, String.t) :: String.t
+  def to_string(%__MODULE__{} = pair, split \\ "-") do
+    "#{pair.base}#{split}#{pair.quote}"
+  end
+
 end
