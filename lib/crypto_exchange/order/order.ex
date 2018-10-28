@@ -10,7 +10,7 @@ defmodule CryptoExchange.Order do
   @type type :: String.t
 
   @type t :: %__MODULE__{
-    id: non_neg_integer | nil,
+    id: id | nil,
     type: type,
     quantity: float,
     price: float,
@@ -20,13 +20,13 @@ defmodule CryptoExchange.Order do
 
   defstruct [
     :id,
-    :type
+    :type,
     :quantity,
     :price,
     :pair,
     :date
   ]
 
-  def total(%Order{quantity: q, price: p}), do: q * p
+  def total(%__MODULE__{quantity: q, price: p}), do: q * p
 
 end
